@@ -5,13 +5,13 @@ import WelcomeScreen from './App/Screens/WelcomeScreen';
 import ViewImageScreen from './App/Screens/ViewImageScreen';
 import ButtonComponent from './App/components/ButtonComponent';
 import ListingView from './App/Screens/ListingView';
+import MessagesScreen from './App/Screens/MessagesScreen';
 
 export default function App() {
 
-  const onPress = () => console.log("Pressed!")
-
   return (
     // <ListingView />
-    <ViewImageScreen />
+    // <ViewImageScreen />
+    <MessagesScreen />
   )
 }
