@@ -23,11 +23,8 @@ function Card({ title, subtitle, image }) {
 
 const styles = StyleSheet.create({
   Card: {
-    flex: 0.40,
     marginBottom: 20,
-    backgroundColor: 'white',
-    borderRadius: 10,
-    width: "90%",
+    backgroundColor: colors.white,
     borderRadius: 15,
     overflow: 'hidden'
   },

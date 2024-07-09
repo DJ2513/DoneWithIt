@@ -1,49 +1,47 @@
-import { View, StyleSheet, Text, Image } from 'react-native';
-import ListItem from '../components/ListItem';
+import { FlatList, View, StyleSheet } from 'react-native';
+import ListItem from '../components/Lists/ListItem';
+import Card from '../components/Card';
 import React from 'react';
 import colors from '../config/colors';
+import Screen from '../components/Screen';
+
+const listings = [
+  {
+    id: 1,
+    title: 'Red jacket for sale',
+    price: 100,
+    image: require('../assets/jacket.jpg'),
+  },
+  {
+    id: 2,
+    title: 'Couch in great condition',
+    price: 250,
+    image: require('../assets/couch.jpg'),
+  }
+]
 
 function ListingView(props) {
   return (
-    <View style={styles.container}>
-      <Image source={require("../assets/jacket.jpg")} style={styles.image} />
-      <View style={styles.textDetails}>
-        <Text style={styles.title}>Red jacket for sale!</Text>
-        <Text style={styles.price}>$300</Text>
-        <View style={styles.listContainer}>
-          <ListItem
-            image={require("../assets/mosh.jpg")}
-            title="Mosh Hamedani"
-            subtitle="5 Listings"
+    <Screen extraStyles={styles.screen}>
+      <FlatList
+        data={listings}
+        keyExtractor={(listing) => listing.id.toString()}
+        renderItem={({ item }) =>
+          <Card
+            title={item.title}
+            subtitle={`$ ${item.price}`}
+            image={item.image}
           />
-        </View>
-      </View>
-    </View>
+        }
+      />
+    </Screen>
   );
 }
 
 const styles = StyleSheet.create({
-  container: {
-    backgroundColor: colors.white,
-  },
-  image: {
-    width: "100%",
-    height: 300
-  },
-  price: {
-    fontSize: 20,
-    color: colors.secondary,
-    marginVertical: 10
-  },
-  textDetails: {
-    padding: 20,
-  },
-  title: {
-    fontSize: 24,
-    fontWeight: '500'
-  },
-  listContainer: {
-    marginVertical: 40
+  screen: {
+    backgroundColor: colors.light,
+    padding: 20
   }
 })
 
