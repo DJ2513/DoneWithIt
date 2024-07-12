@@ -4,7 +4,14 @@ import { useFormikContext } from 'formik'
 import React from 'react';
 
 
-function AppFormPicker({ name, width, items, placeholder }) {
+function AppFormPicker({
+  items,
+  name,
+  numberOfColumns,
+  PickerItemComponent,
+  placeholder,
+  width,
+}) {
 
   const { setFieldValue, values, errors, touched } = useFormikContext()
 
@@ -12,6 +19,8 @@ function AppFormPicker({ name, width, items, placeholder }) {
     <>
       <AppPicker
         items={items}
+        PickerItemComponent={PickerItemComponent}
+        numberOfColumns={numberOfColumns}
         onSelectItem={(item) => setFieldValue(name, item)}
         placeholder={placeholder}
         selectedItem={values[name]}

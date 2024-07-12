@@ -17,13 +17,13 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     alignItems: "center",
     padding: 15,
-    width: "100%"
+    margin: 10,
+    width: "90%"
   },
   buttonText: {
     color: colors.white,
     fontWeight: "bold",
     fontSize: 18,
-    textTransform: "capitalize"
   },
 });
 

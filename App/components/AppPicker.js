@@ -1,4 +1,4 @@
-import { TextInput, View, StyleSheet, Platform, TouchableWithoutFeedback, Modal, Button, FlatList } from 'react-native';
+import { View, StyleSheet, TouchableWithoutFeedback, Modal, Button, FlatList } from 'react-native';
 import React, { useState } from 'react';
 import { MaterialCommunityIcons } from "@expo/vector-icons"
 import defaultStyles from '../config/styles'
@@ -6,7 +6,16 @@ import AppText from './AppText';
 import Screen from './Screen';
 import PickerItem from './PickerItem';
 
-function AppPicker({ icon, items, width = '100%', onSelectItem, selectedItem, placeholder }) {
+function AppPicker({
+  icon,
+  items,
+  numberOfColumns = 1,
+  onSelectItem,
+  PickerItemComponent = PickerItem,
+  placeholder,
+  selectedItem,
+  width = '100%',
+}) {
 
   const [modalVisible, setModalVisible] = useState(false);
 
@@ -25,10 +34,11 @@ function AppPicker({ icon, items, width = '100%', onSelectItem, selectedItem, pl
           <Button title='Close' onPress={() => { setModalVisible(false) }} />
           <FlatList
             data={items}
+            numColumns={numberOfColumns}
             keyExtractor={(item) => item.value.toString()}
             renderItem={({ item }) =>
-              <PickerItem
-                label={item.label}
+              <PickerItemComponent
+                item={item}
                 onPress={() => {
                   setModalVisible(false)
                   onSelectItem(item)
@@ -47,7 +57,6 @@ const styles = StyleSheet.create({
     borderRadius: 25,
     padding: 10,
     marginVertical: 10,
-    flexDirection: 'row',
   },
   icon: {
     marginRight: 10

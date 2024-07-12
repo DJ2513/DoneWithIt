@@ -30,7 +30,7 @@ const styles = StyleSheet.create({
   container: {
     flexDirection: 'row',
     width: '100%',
-    padding: 15,
+    padding: 5,
     backgroundColor: colors.white,
     alignItems: 'center'
   },
@@ -52,7 +52,7 @@ const styles = StyleSheet.create({
     fontSize: 16,
     fontStyle: 'italic',
     fontWeight: '300',
-    color: '#6e6969'
+    color: colors.medium
   }
 })
 
